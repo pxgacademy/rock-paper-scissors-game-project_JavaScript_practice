@@ -8,6 +8,16 @@ const msg = document.querySelector("#msg");
 const userScoreBox = document.querySelector("#user_score");
 const botScoreBox = document.querySelector("#bot_score");
 const msgContainer = document.querySelector("#msg_container");
+const resetBtn = document.querySelector("#reset");
+
+resetBtn.addEventListener("click", () => {
+  msg.innerText = "Play your move";
+  msgContainer.style.backgroundColor = "blueviolet";
+  userScoreBox.innerText = 0;
+  botScoreBox.innerText = 0;
+  userScore = 0;
+  botScore = 0;
+});
 
 const genBotChoice = () => {
   const options = ["rock", "paper", "scissors"];

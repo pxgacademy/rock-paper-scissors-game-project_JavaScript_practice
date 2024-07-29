@@ -68,7 +68,6 @@ body {
   padding: 20px;
   box-sizing: border-box;
   background-color: blueviolet;
-  border: 4px solid rgba(0, 0, 0, 0);
   box-shadow: 10px 10px 1rem rgba(0, 0, 0, 0.5);
   margin-top: 30px;
   border-radius: 0.8rem;
@@ -81,10 +80,24 @@ body {
   font-weight: 600;
 }
 
-#msg_container:hover {
-  border: 4px solid #ffffff;
+#reset{
+  width: 600px;
+  padding: 20px;
+  background-color: blueviolet;
+  box-shadow: 10px 10px 1rem rgba(0, 0, 0, 0.5);
+  margin-top: 30px;
+  border-radius: 0.8rem;
+  transition: 0.5s;
+  font-size: 2.3rem;
+  font-weight: 600;
+  color: #ffffff;
 }
 
+#reset:hover{
+  background-color: deeppink;
+}
+
+/* Responsive design */
 @media screen and (max-width: 576px) {
   body {
     padding: 15px;
@@ -139,6 +152,11 @@ body {
   }
 
   #msg {
+    font-size: 1.5rem;
+  }
+
+  #reset{
+    width: 100%;
     font-size: 1.5rem;
   }
 }
