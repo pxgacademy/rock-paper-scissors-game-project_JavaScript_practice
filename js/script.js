@@ -8,16 +8,44 @@ const msg = document.querySelector("#msg");
 const userScoreBox = document.querySelector("#user_score");
 const botScoreBox = document.querySelector("#bot_score");
 const msgContainer = document.querySelector("#msg_container");
-const resetBtn = document.querySelector("#reset");
+const resetBtn = document.querySelectorAll(".reset");
+const winnerContainer = document.querySelector("#winner_container");
+const winnerTitle = document.querySelector("#winner_title");
+const userFinalScore = document.querySelector("#userFinalScore");
+const botFinalScore = document.querySelector("#botFinalScore");
+const display = document.querySelector("#display");
 
-resetBtn.addEventListener("click", () => {
-  msg.innerText = "Play your move";
-  msgContainer.style.backgroundColor = "blueviolet";
-  userScoreBox.innerText = 0;
-  botScoreBox.innerText = 0;
-  userScore = 0;
-  botScore = 0;
+resetBtn.forEach((reset) => {
+  reset.addEventListener("click", () => {
+    msg.innerText = "Play your move";
+    msgContainer.style.backgroundColor = "blueviolet";
+    userScoreBox.innerText = 0;
+    botScoreBox.innerText = 0;
+    userScore = 0;
+    botScore = 0;
+    winnerContainer.style.display = "none";
+    display.style.visibility = "visible";
+  });
 });
+
+//final winner
+let winnerTrophy = (userScore, botScore) => {
+  if (userScore >= 10 || botScore >= 10) {
+    if (userScore >= 10) {
+      display.style.visibility = "hidden";
+      winnerContainer.style.display = "block";
+      winnerTitle.innerText = `Congratulations!\nYou Won`;
+      userFinalScore.innerText = `Your score is: ${userScore}`;
+      botFinalScore.innerText = `Bot's score is: ${botScore}`;
+    } else {
+      display.style.visibility = "hidden";
+      winnerContainer.style.display = "block";
+      winnerTitle.innerText = `\nBot Won!`;
+      userFinalScore.innerText = `Your score is: ${userScore}`;
+      botFinalScore.innerText = `Bot's score is: ${botScore}`;
+    }
+  }
+};
 
 const genBotChoice = () => {
   const options = ["rock", "paper", "scissors"];
@@ -36,11 +64,13 @@ const showWinner = (userWin, userChoice, botChoice) => {
     msgContainer.style.backgroundColor = "green";
     userScore++;
     userScoreBox.innerText = userScore;
+    winnerTrophy(userScore, botScore);
   } else {
     msg.innerText = `Bot won! ${botChoice} beats your ${userChoice}`;
     msgContainer.style.backgroundColor = "red";
     botScore++;
     botScoreBox.innerText = botScore;
+    winnerTrophy(userScore, botScore);
   }
 };
 
