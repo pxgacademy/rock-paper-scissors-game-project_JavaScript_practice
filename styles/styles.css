@@ -128,7 +128,7 @@ main {
   transition: 0.5s;
   font-size: 2.3rem;
   font-weight: 600;
-  color: #ffffff;
+  border: none;
 }
 
 .reset:hover {
